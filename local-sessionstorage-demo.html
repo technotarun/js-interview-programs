@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<script>
+			function setItemToLS(){
+				var username = document.getElementById("username").value;
+				localStorage.setItem("username", username);
+			}
+			
+			function getItemToLS(){
+				var username = document.getElementById("username").value;
+				console.log(localStorage.getItem(username));
+			}
+			
+			function deleteItemToLS(){
+				var username = document.getElementById("username").value;
+				localStorage.removeItem(username);
+			}
+			
+			function setItemToSS(){
+				var username = document.getElementById("username").value;
+				sessionStorage.setItem("username", username);
+			}
+		</script>
+	</head>
+	<body>
+		<input type="text" id="username" name="username"/>
+		<button onClick="setItemToLS();">Set Local Storage</button>
+		<button onClick="getItemToLS();">Get Local Storage</button>
+		<button onClick="deleteItemToLS();">Delete Local Storage</button>
+		<button onClick="setItemToSS();">Set Session Storage</button>
+	</body>
+</html>

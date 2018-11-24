@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+      .red{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: red;
+            width: 400px;
+            height: 400px;
+        }
+        .blue{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+            width: 300px;
+            height: 300px;
+        }
+        .green{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: green;
+            width: 200px;
+            height: 200px;
+        }
+  </style>
+</head>
+<body>
+   <div id="redcontainer" class="red">
+     <div id="bluecontainer" class="blue">
+       <div id="greencontainer" class="green">
+       
+       </div>
+     </div>
+   </div>
+
+   <script>
+      document.getElementById("redcontainer").addEventListener("click", function(element){
+        alert(element.target.className);
+    });
+  </script>
+</body>
+</html>

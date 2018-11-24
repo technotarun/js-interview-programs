@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script type="text/javascript">
+
+        function generateChessBoard() {
+            let chessBoardHtml = "";
+            for (let index = 0; index < 8; index++) {
+                if (index % 2 === 0) {
+                    chessBoardHtml = chessBoardHtml + generateHtml('black', 'white');
+                } else {
+                    chessBoardHtml = chessBoardHtml + generateHtml('white', 'black');
+                }
+            }
+            document.getElementById("board").innerHTML = chessBoardHtml;
+        }
+
+
+        function generateHtml(color1, color2) {
+            let innerHtml = "";
+            for (let i = 0; i < 8; i++) {
+                if (i % 2 === 0) {
+                    innerHtml = innerHtml + `<div class=${color1}></div>`;
+                } else {
+                    innerHtml = innerHtml + `<div class=${color2}></div>`;
+                }
+            }
+
+            return innerHtml;
+        }
+
+    </script>
+
+    <style>
+        .container {
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 420px;
+            min-width: 420px;
+            width: 420px;
+        }
+
+        .container>div {
+            text-align: center;
+            width: 50px;
+            height: 50px;
+            border: 1px solid black;
+        }
+
+        .white {
+            background-color: white;
+        }
+
+        .black {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button" id="generate" name="Generate" value="Generate" onclick="generateChessBoard();"/>
+    <div id="board" class="container"></div>
+
+    <script>
+        document.getElementById("board").addEventListener("click", function(element){
+            alert(element.target.className);
+        })
+    </script>
+</body>
+
+</html>

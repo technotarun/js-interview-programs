@@ -1,0 +1,29 @@
+<!-- <html>
+    <body ng-app="myApp">
+        <div ng-controller="Ctrl">Hello {{msg}}!</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('Ctrl', function($scope) {
+                $scope.msg = 'Nik';
+            });
+        </script>
+    </body>
+</html> -->
+
+<html>
+    <body>
+        <div ng-controller="Ctrl">Hello {{msg}}!</div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('Ctrl', function($scope) {
+                $scope.msg = 'Nik';
+            }); 
+            //manual bootstrap process 
+            angular.element(document).ready(function () {
+                angular.bootstrap(document, ['myApp']); 
+            });
+        </script>
+    </body>
+</html>

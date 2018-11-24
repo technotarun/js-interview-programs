@@ -1,0 +1,34 @@
+<html>
+    <head><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script></head>
+    <body ng-app="myApp">
+        <outer>
+            <inner></inner>
+        </outer>
+        <script>
+           var app = angular.module("myApp",[]);
+            app.directive('outer', function(){
+                return{
+                    transclude:true,
+                    restrict:'E',
+                    template:'<div><h1>i am a outer</h1><div ng-transclude></div></div>',
+                    controller : function($scope){
+                        this.addItem = function(val){
+                            console.log(val);
+                        }
+                    }
+                }
+            });
+
+            app.directive('inner',function(){
+                return{
+                    restrict:'E',
+                    require : '^outer',
+                    template : '<div><h1>i am a inner</h1></div>',
+                    link:function(scope,elem,attr,outercontrol){
+                        outercontrol.addItem(1);
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

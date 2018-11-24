@@ -1,0 +1,56 @@
+<html>
+    <head><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script></head>
+    <body ng-app="APP">
+        <car model="A" brakes wheels abs></car>
+        <car model="B" brakes wheels ></car>
+        <car model="C" wheels ></car>
+        <script>
+            //Below is the reference
+            //https://www.youtube.com/watch?v=0SxIwXMysnc
+
+           angular.module('APP', []).
+           controller('carController', function($scope) {
+               $scope.features = ['is a car'];
+               this.addFeature = function(f){
+                   $scope.features.push(f);
+               }
+           }).
+           directive('car', function() {
+               return {
+                   scope: true,
+                   restrict: 'E',
+                   link: function(scope, element, attrs) {
+                        scope.model = attrs.model;
+                   },
+                   controller: 'carController',
+                   template: 'Model: {{model}} <ul><li ng-repeat="feature in features">{{feature}}</li></ul>'
+               }
+           }).
+           directive('wheels', function() {
+               return {
+                   restrict: 'A',
+                   require: '^car',
+                   link: function(scope, element, attrs, carController) {
+                       carController.addFeature('has wheels');
+                   }
+               }
+           }).directive('brakes', function() {
+               return {
+                   restrict: 'A',
+                   require: '^car',
+                   link: function(scope, element, attrs, carController) {
+                       carController.addFeature('has brakes');
+                   }
+               }
+           }).directive('abs', function() {
+               return {
+                   restrict: 'A',
+                   require: '^car',
+                   link: function(scope, element, attrs, carController) {
+                       carController.addFeature('has abs');
+                   }
+               }
+           })
+        </script>
+    </body>
+</html>
